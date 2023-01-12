@@ -19,19 +19,11 @@ export class Reports {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @PrimaryColumn()
-  order_id: number;
-  @OneToOne(() => Orders, { cascade: true })
-  @JoinColumn({ name: 'user_id' }) // This matches @PrimaryColumn name
+  @OneToOne(() => Orders)
+  @JoinColumn()
   orders: Orders;
 
   @Column({ type: 'boolean' })
-  @PrimaryColumn()
-  user_id: number;
-  @OneToOne(() => Users, { cascade: true })
-  @JoinColumn({ name: 'user_id' }) // This matches @PrimaryColumn name
-  users: Users;
-
   payment: boolean;
 
   @CreateDateColumn()
